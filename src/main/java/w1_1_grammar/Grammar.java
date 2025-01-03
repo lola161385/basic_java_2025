@@ -22,6 +22,15 @@ public class Grammar {
      */
     public static void main(String[] args) {
 
+       // 공백은 개행과 탭과 빈칸(공백문자)
+       // 제어문자를 기반으로 공백이 처리가 됨(Escape문자)
+       // \n: 개행, \r: 탭, &nbsp;: 공백문자
+       // \n\r: OS시스템에 따라 개행을 이렇게 표현
 
+        // 구분자의 종류
+        // 공백문자 , 세미콜론 , 콤마 , 중괄호 , Dot(.)
+
+        // 식별자 규칙
+        int a1_$ = 1;
     }
 }

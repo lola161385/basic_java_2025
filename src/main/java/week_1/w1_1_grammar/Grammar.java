@@ -1,4 +1,4 @@
-package w1_1_grammar;
+package week_1.w1_1_grammar;
 
 /**
  * 협업하는 개발자들을 위해서

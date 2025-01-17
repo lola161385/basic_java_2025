@@ -18,7 +18,7 @@ public class BattleSkill implements Skill {
 
     @Override
     public boolean canUseSkillOutside() {
-        return false; // 전투 외에서는 사용 불가
+        return false; // 배틀 스킬은 전투 외에서 사용 불가
     }
 
     @Override

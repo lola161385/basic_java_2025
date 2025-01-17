@@ -3,8 +3,6 @@ package week_3.w3_9_pokemon;
 import java.util.ArrayList;
 
 public class Pokemon {
-    // 포켓몬 객체 생성
-    // 이름, 타입(여러개 가능), 분류, 보유 기술(4개)
     String name;
     ArrayList<String> Ptype;
     String category;
@@ -12,7 +10,7 @@ public class Pokemon {
     int level;
     int hp;
 
-    public Pokemon(String name, ArrayList<String> Ptype, String category, ArrayList<Skill> Pskill,  int level, int hp) {
+    public Pokemon(String name, ArrayList<String> Ptype, String category, ArrayList<Skill> Pskill, int level, int hp) {
         this.name = name;
         this.Ptype = Ptype;
         this.category = category;
@@ -21,14 +19,19 @@ public class Pokemon {
         this.hp = hp;
     }
 
-    public void useSkill(String skillName) {
+    // 스킬 사용 메서드
+    public void useSkill(String skillName, String context) {
         for (Skill skill : Pskill) {
             if (skill.getName().equals(skillName)) {
-                skill.use("battle"); // 전투 상황에서 기술 사용
+                if (context.equals("outside") && !skill.canUseSkillOutside()) {
+                    System.out.println(skillName + " 스킬은 전투 외에서는 사용할 수 없습니다.");
+                } else {
+                    skill.use(context);
+                }
                 return;
             }
         }
-        System.out.println("스킬 " + skillName + "을(를) 찾을 수 없습니다.");
+        System.out.println(this.name + "은(는) 스킬 " + skillName + "을(를) 배우지 않았습니다.");
     }
 
     // 스킬 이름을 반환하는 메서드

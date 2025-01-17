@@ -3,15 +3,16 @@ package week_3.w3_9_pokemon;
 public class VisionSkill implements Skill {
     private String name;
     private int damage;
-    private String SKillType;
     private String description;
+    private String UseSkillIsNotBattle;
 
-    public VisionSkill(String name, int damage, String description) {
+    public VisionSkill(String name, int damage, String description, String UseSkillIsNotBattle) {
         this.name = name;
         this.damage = damage;
         this.description = description;
-        SKillType = "Vision";
+        this.UseSkillIsNotBattle = UseSkillIsNotBattle;
     }
+
     @Override
     public String getName() {
         return name;
@@ -19,15 +20,15 @@ public class VisionSkill implements Skill {
 
     @Override
     public boolean canUseSkillOutside() {
-        return true;
+        return true; // 비전 스킬은 전투 외에서 사용 가능
     }
 
     @Override
     public void use(String context) {
-        if(context.equals("Vision")) {
-            System.out.println(name + " 스킬 사용" + description);
+        if (context.equals("outside")) {
+            System.out.println(name + " 스킬 사용: " + UseSkillIsNotBattle);
         } else {
-            System.out.println(name + "스킬은 전투중이 아닐때는 사용 불가합니다.");
+            System.out.println(name + " 스킬 사용! Effect: " + description + ", Damage: " + damage);
         }
     }
 }

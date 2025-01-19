@@ -42,4 +42,16 @@ public class Pokemon {
         }
         return skillNames;
     }
+
+    // 레벨 업 메서드
+    public void levelUp() {
+        if (this.level < 100){
+            this.level++;
+            //this.hp = this.level * 10; // HP를 레벨에 맞게 업데이트
+            System.out.println(this.name + "의 레벨이 " + this.level + "로 상승했습니다!");
+        }else {
+            System.out.println(this.name + "의 레벨은 이미 최고단계입니다 ");
+        }
+
+    }
 }

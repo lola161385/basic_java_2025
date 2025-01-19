@@ -28,7 +28,7 @@ public class Trainer {
             return true; // 추가 성공
         } else {
             System.out.println(this.name + "은(는) 이미 최대 " + MAX_POKEMON + "마리의 포켓몬을 보유하고 있습니다.");
-            System.out.println(pokemon.name + " 을 pc에 저장합니다.");
+            System.out.println(pokemon.name + " 을(를)" + this.name + " pc에 저장합니다.");
             myPokemonPc.add(pokemon);
             return false; // 추가 실패
         }
@@ -74,14 +74,43 @@ public class Trainer {
         return sb.toString();
     }
 
-    /*// 전투 외에서 스킬 사용
-    public void useSkillOutside(String pokemonName, String skillName) {
+    // 전투 시작 메서드
+    public void startBattle(Trainer opponent) {
+        Battle battle = new Battle(this, opponent);
+        battle.start();
+    }
+
+    // 야생 포켓몬과의 전투 시작 메서드
+    public void startWildBattle(Pokemon wildPokemon) {
+        WildBattle wildBattle = new WildBattle(this, wildPokemon);
+        wildBattle.start();
+    }
+
+    // 치료실에서 포켓몬 치료
+    public void visitHealingCenter(HealingCenter healingCenter) {
+        healingCenter.healPokemon(this);
+    }
+
+    // 전투에서 승리했을 때 호출되는 메서드
+    public void winBattle() {
+
+        System.out.println("\n" + this.name + "이(가) 전투에서 승리했습니다!");
+        System.out.println("모든 포켓몬의 레벨이 1 상승합니다.");
+
         for (Pokemon pokemon : myPokemon) {
-            if (pokemon.name.equals(pokemonName)) {
-                pokemon.useSkill(skillName, "outside");
-                return;
-            }
+            pokemon.levelUp(); // 포켓몬 레벨 업
+            PokeEvolution.checkAndEvolve(pokemon); // 진화 조건 확인 및 처리
         }
-        System.out.println(pokemonName + "을(를) 찾을 수 없습니다.");
-    }*/
+    }
+
+
+
+    // Getter 메서드 추가
+    public String getName() {
+        return name;
+    }
+
+    public ArrayList<Pokemon> getMyPokemon() {
+        return myPokemon;
+    }
 }

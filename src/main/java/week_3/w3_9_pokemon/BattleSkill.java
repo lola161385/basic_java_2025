@@ -29,4 +29,8 @@ public class BattleSkill implements Skill {
             System.out.println(name + " 스킬은 전투 외 상황에서는 사용할 수 없습니다.");
         }
     }
+
+    public int getDamage(){
+        return damage;
+    }
 }

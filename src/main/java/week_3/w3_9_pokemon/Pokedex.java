@@ -100,16 +100,44 @@ public class Pokedex {
             }
         }
 
-        // 포켓몬 검색
+        // 포켓몬 검색 (도감 정보 출력 없이 데이터만 반환)
         public static Pokedex getPokemon(String name) {
             for (Pokedex pokedex : pokedexMap.values()) {
                 if (pokedex.name.equalsIgnoreCase(name)) {
-                    pokedex.displayPokedexEntry(); // 포켓몬 정보 출력
-                    return pokedex;
+                    return pokedex; // 도감 정보 출력 없이 포켓몬 데이터만 반환
                 }
             }
             System.out.println(name + "은(는) 도감에 없습니다."); // 포켓몬을 찾지 못한 경우
             return null;
         }
+
+        // 도감 정보를 출력하는 별도의 메서드
+        public static void displayPokemon(String name) {
+            Pokedex pokedex = getPokemon(name);
+            if (pokedex != null) {
+                pokedex.displayPokedexEntry();
+            }
+        }
+    }
+
+    // Getter 메서드 추가
+    public int getEvolvLevel() {
+        return evolvLevel;
+    }
+
+    public String getNextEvolv() {
+        return nextEvolv;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public ArrayList<String> getTypes() {
+        return types;
+    }
+
+    public String getCategory() {
+        return category;
     }
 }

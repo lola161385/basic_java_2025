@@ -31,4 +31,7 @@ public class VisionSkill implements Skill {
             System.out.println(name + " 스킬 사용! Effect: " + description + ", Damage: " + damage);
         }
     }
+    public int getDamage() {
+        return damage;
+    }
 }
